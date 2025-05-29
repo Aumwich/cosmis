@@ -1,7 +1,9 @@
 # ARCHDOC - Cosmis Project
-**Version 1.0 - May 28, 2025**
+**Version 1.1 - May 28, 2025**
 
 This is the **archdoc** (architecture document) for the Cosmis project - the primary reference file containing the complete project architecture, status, and development context. This document is designed to quickly bring any AI agent up to speed on the project.
+
+**For AI Agents**: Read `.windsurfrules` first for specific instructions on how to work with this project.
 
 ## Version Control
 - **Current Version**: 1.0
@@ -10,6 +12,7 @@ This is the **archdoc** (architecture document) for the Cosmis project - the pri
 - **Developer**: Always use the most recent version when starting new AI sessions
 
 ### Changelog
+- **v1.1** (May 28, 2025): Added reference to .windsurfrules file
 - **v1.0** (May 28, 2025): Initial architecture document created
 
 ---
