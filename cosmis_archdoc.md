@@ -1,5 +1,5 @@
 # ARCHDOC - Cosmis Project
-**Version 1.1 - May 28, 2025**
+**Version 1.2 - May 29, 2025**
 
 This is the **archdoc** (architecture document) for the Cosmis project - the primary reference file containing the complete project architecture, status, and development context. This document is designed to quickly bring any AI agent up to speed on the project.
 
@@ -12,24 +12,36 @@ This is the **archdoc** (architecture document) for the Cosmis project - the pri
 - **Developer**: Always use the most recent version when starting new AI sessions
 
 ### Changelog
+- **v1.2** (May 29, 2025): Integrated SIMSOC rules and Discord adaptation plan
 - **v1.1** (May 28, 2025): Added reference to .windsurfrules file
 - **v1.0** (May 28, 2025): Initial architecture document created
 
 ---
 
 ## Project Overview
-Building a Discord bot system to run a social simulation game based on William A. Gamson's SIMSOC (Simulated Society). The game will support 20-50+ players in roles exploring society, economy, and social justice through structured gameplay.
+Building a Discord bot system to run a social simulation game based on William A. Gamson's SIMSOC (Simulated Society). The game is designed for 10-90 players who take on roles exploring society, economy, and social justice through structured gameplay.
 
 ## Current Status
-- **Phase**: Starting from scratch
-- **Setup Needed**: Discord application, bot tokens, project folder structure
-- **Target**: Multiple specialized bots working together
+- **Phase**: Initial setup complete, ready for core development
+- **Completed**: 
+  - Project structure initialized
+  - Bot applications created
+  - Test server configured
+  - SIMSOC rules documented
+- **Next Phase**: Core game mechanics implementation
 
 ## Architecture Plan
-**Multi-Bot System (under consideration):**
-- **Admin Bot**: Discord server management, player signup, out-of-character interactions, server setup automation with full permissions
-- **Game Bot**: In-game economy, turn management, core SIMSOC mechanics
-- **Communication Bot**: (maybe) - or integrate into Game Bot
+**Multi-Bot System:**
+- **Admin Bot**: Server management, player signup, out-of-character interactions, server setup automation
+- **The Coordinator**: Core SIMSOC mechanics, economy, turn management, in-game actions (previously called Game Bot)
+- **Integration**: Communication features will be part of The Coordinator
+
+**Key Discord Adaptations:**
+1. **Regions → Channels**: Physical regions become Discord channels/categories
+2. **Travel System**: Channel permissions control movement between regions
+3. **Subsistence**: Automated tracking with daily checks
+4. **National Indicators**: Dashboard channel with live updates
+5. **Simforce**: Role-based permissions for enforcement
 
 **Admin Bot Requirements:**
 - Full Discord server permissions for automated setup
@@ -45,17 +57,53 @@ Building a Discord bot system to run a social simulation game based on William A
 - Slash commands for user interaction
 - GitHub for version control
 
-## Game Mechanics
-- **Turn-based**: 20-30 minute turns with continuous player actions
-- **Role-playing**: Players take societal roles, make decisions from character perspective
-- **Social simulation**: Economy, politics, social justice scenarios
-- **Collaborative**: Heavy player-to-player communication and negotiation
-- **Regional structure**: Separate Discord channels/categories for different game regions
-- **Honor system**: Players agree not to share information across regions inappropriately
-- **Travel**: Near-instant between regions to maintain game pace
-- **Spectator mode**: Non-playing observers with separate channels and strict no-cheating rules
-- **Kibitz room**: Spectator chat area for discussing observations
-- **Debrief component**: Post-game reflection on society, leadership, economics, social justice
+## Database Schema (Planned)
+
+### Players Table
+- player_id (PK)
+- discord_id
+- username
+- home_region
+- current_region
+- simbucks_balance
+- subsistence_status
+- goals
+- last_active
+- status (active/arrested/deceased)
+
+### Game State
+- current_turn
+- fes_level
+- sl_level
+- sc_level
+- pc_level
+- last_updated
+
+### Transactions
+- transaction_id (PK)
+- from_player (FK)
+- to_player (FK)
+- amount
+- type
+- timestamp
+- description
+
+### Agencies
+- agency_id (PK)
+- name
+- type
+- owner_id (FK)
+- region
+- balance
+- status
+
+### Player Positions
+- position_id (PK)
+- player_id (FK)
+- agency_id (FK)
+- position_type
+- start_date
+- end_date
 
 ## Player Documentation Needs
 - **Welcome/Onboarding guide**: Critical first experience for new Discord server members
@@ -116,29 +164,120 @@ cosmis-game/
 - **Security**: Validate all user inputs, especially in economic transactions
 - **Documentation**: Generate player-facing docs alongside code development
 
-## Next Session Goals
+## Documentation Structure
+
+### 1. SIMSOC Rules (simrules.md)
+- Original board game rules and mechanics
+- Foundation for Discord adaptation
+- Technical reference for developers
+
+### 2. Discord Implementation Rules (disrules.md)
+- Technical specification for bot development
+- Maps SIMSOC concepts to Discord features
+- Defines system behaviors and automations
+
+### 3. Player Documentation (playerrules.md)
+- How to play the Discord version
+- Command references and guides
+- Game concepts explained for players
+
+## Future Session Goals
+
+### Completed
 - [x] Set up Discord application and get bot tokens
 - [x] Create project folder structure
 - [x] Initialize basic package.json and dependencies
-- [ ] Design initial database schema (including regional structure)
+- [x] Design initial database schema (including regional structure)
 - [x] Create Admin bot skeleton with Discord permissions
-- [ ] Create Game bot skeleton with basic functionality
 - [x] Set up Discord server for bot testing
-- [ ] Obtain machine-readable versions of 5th edition SIMSOC books
+- [x] Review SIMSOC rules documentation
+- [x] Draft core SIMSOC rules (simrules_draft.md)
+- [x] Draft Discord implementation rules (disrules_draft.md)
+- [x] Define five-region system (Red, Blue, Yellow, Green, Gray)
+- [x] Design spectator system and permissions
+
+### Immediate Next Steps
+- [ ] Create The Coordinator bot skeleton with basic functionality
+- [ ] Implement Admin bot setup commands for channel/role creation
+- [ ] Create database initialization scripts
+- [ ] Implement basic movement system between regions
+- [ ] Set up automated channel permissions
+
+### Short-term Goals
+- [ ] Implement core game loop and turn system
+- [ ] Create economic system with Simbucks and transactions
+- [ ] Develop verification system for manual tasks
+- [ ] Build basic admin dashboard for game management
+- [ ] Implement logging and monitoring
+
+### Documentation
 - [ ] Draft player onboarding guide template
-- [ ] Plan Discord server channel structure for regions
-- [x] **Update this ARCHDOC.md file with progress made**
+- [ ] Create admin command reference
+- [ ] Document API endpoints and database schema
+- [ ] Prepare testing protocols
 
-## Next Session
-In the next session, we'll focus on:
-1. Designing the initial database schema
-2. Planning the Discord server channel structure
-3. Implementing basic bot commands
+### Testing
+- [ ] Set up automated testing framework
+- [ ] Create test scenarios
+- [ ] Conduct initial bot testing
+- [ ] Perform load testing with multiple users
 
-We'll start with the database schema to define our data models before implementing the channel structure and bot commands.
+## Implementation Priorities
+1. **Core Database Models**: Implement the schema outlined above
+2. **Basic Movement**: Channel-based region system
+3. **Subsistence Tracking**: Automated checks and consequences
+4. **Economic System**: Basic transactions and agency management
+5. **National Indicators**: Dashboard and update system
 
-## Architectural Questions to Revisit
-- Exact role definitions for game simulation
-- Turn timing and automation requirements
-- Inter-bot communication methods
-- Hosting strategy for production deployment
+## Discord-Specific Adaptations Needed
+
+### Channel Structure
+1. **Region Channels**:
+   - `#red-region`, `#blue-region`, etc. - Text channels for each region
+   - `🔊red-voice`, `🔊blue-voice`, etc. - Voice channels for each region
+   - `#gray-region` - Neutral meeting area for travelers
+   - Players can create their own threads and forums within regions
+
+2. **Core Channels**:
+   - `#announcements` - Game-wide announcements (read-only for players)
+   - `#rules` - Game rules and guidelines
+   - `#help` - Player support and questions
+
+3. **Spectator Areas**:
+   - `#kibitz` - For spectators to discuss the game
+   - `#debrief` - Post-game discussion and analysis
+
+### Bot Commands to Implement
+- **Movement**:
+  - `/visit [region]` - Travel to another region
+  - `/travel_status` - Check your travel ticket status
+  - `/return_home` - End your journey and return home
+
+- **Player Actions**:
+  - `/work [agency]` - Perform job actions
+  - `/give @user [amount] [reason]` - Transfer Simbucks
+  - `/perks` - View available perks
+  - `/status` - Check your current status
+
+- **Social**:
+  - `/create_agreement @user [terms]` - Propose an agreement
+  - `/accept_agreement [id]` - Accept a proposed agreement
+  - `/report [issue]` - Report rule violations (to JUDCO)
+
+### Automation Requirements
+1. **Turn Management**:
+   - Automatic turn advancement with notifications
+   - Subsistence verification
+   - Resource distribution to agencies
+   - National indicator calculations (visible to MASMED head)
+
+2. **Moderation**:
+   - Channel access control
+   - Rule enforcement
+   - Conflict resolution tools
+
+## Open Questions
+1. How to handle real-time vs. turn-based actions?
+2. Best way to implement the honor system?
+3. Scaling for 50+ players?
+4. Automated vs. manual moderation balance?

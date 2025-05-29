@@ -1,49 +1,75 @@
-## Death
+# SIMRULES.md - Core SIMSOC Mechanics
+**Open Source Rule Mechanics for Social Simulation Games**
 
-**Causes of Death**:
-- Two consecutive sessions without subsistence
-- Two consecutive arrests (second arrest = execution)
+## Overview
 
-**Consequences**:
-- Complete elimination from society participation
-- Become observer/coordinator assistant only
-- Each death reduces Standard of Living, Social Cohesion, and Public Commitment by 5 units each
+SIMSOC (Simulated Society) creates a social simulation where players take on roles in an interdependent society. Players must balance individual survival, group loyalty, and collective welfare while navigating economic pressures and social dynamics.
 
-## Minority Group Members (Optional)
+## Core Principles
 
-**Designation**: Up to 20% of society members may be designated as Minority Group Members
-- **Identification**: Wear insignia or armband for clear identification
-- **Coordinator Decision**: Optional feature enabled at coordinator's discretion
-
-**Special Vulnerabilities**:
-- **Form K Action**: Any two non-minority members can remove minority members from positions at no cost
-- **Scope**: Can fire from jobs and/or remove as group head or agency owner
-- **Timing**: Can occur at any time during session
-
-**Effects of Form K**:
-- **Immediate**: Lose positions for remainder of current session
-- **Future**: Cannot hold any basic group or agency position during current session
-- **Repeated**: New Form K can be filed in subsequent sessions
-- **Resources Protected**: Retain all personal possessions (Simbucks, tickets, certificates, endowments)
-- **Simforce Exception**: Minority Group control of Simforce unaffected by Form K
-- **Replacement**: New heads/owners designated according to standard rules
-
-**Recovery**: Minority Group Members may reacquire former positions next session if able
-
-**Alternative Option**: Coordinator may require test for group head/agency head eligibility instead
+- **No Clear Winners**: Focus is on learning about social dynamics, not victory
+- **Interdependence**: Player goals require cooperation with others
+- **Honor System**: Rules depend on player cooperation; cheating defeats the purpose
+- **Natural Forces**: Core mechanics represent unavoidable constraints
+- **Human Laws**: Players can create additional agreements and rules
+- **Emergent Governance**: No required government structure; political systems emerge organically
 
 ## Individual Goals
 
-**Purpose**: Personal objectives that emphasize individual achievement rather than collective benefit
+**Purpose**: Personal objectives that guide your role in the simulation
 
-**Goal Categories**:
-1. **Power**: Influence what happens in society as much as possible
-2. **Center of Attention**: Be central figure, salient to as many people as possible  
-3. **Style of Life**: Enjoy highest standard of living, including maximum Munchies
-4. **Security**: Avoid threats of subsistence loss, job loss, arrest, or other misfortune
-5. **Popularity**: Be loved and admired as much as possible
-6. **Fun and Adventure**: Lead exciting life filled with adventure and challenge
-7. **Other**: Custom goals specified by player
+**Philosophy**:
+- Your goals are entirely up to you - they define what success means for your character
+- The examples below are just starting points - feel free to create your own goals
+- You can pursue multiple goals simultaneously or focus on just one
+- Your goals will naturally shape your interactions with others and the society you're part of
+
+**Example Goal Categories**:
+*These are just suggestions to spark your imagination. The most interesting goals are often those you create yourself based on how you want to experience the simulation.*
+
+1. **Power**
+   - **Objective**: Influence what happens in society as much as possible
+   - **Strategy**: Seek leadership positions, control resources, form alliances
+   - **Mechanics**: Track influence through positions held and decisions made
+
+2. **Center of Attention**
+   - **Objective**: Be a central figure, known to as many people as possible
+   - **Strategy**: Engage in visible actions, take public stances, be involved in key events
+   - **Mechanics**: Track visibility through interactions and recognition by others
+
+3. **Style of Life**
+   - **Objective**: Enjoy the highest standard of living, including maximum Munchies
+   - **Strategy**: Accumulate wealth, acquire luxury items, avoid menial work
+   - **Mechanics**: Track through Simbucks, possessions, and quality of living conditions
+
+4. **Security**
+   - **Objective**: Avoid threats to your position and well-being
+   - **Strategy**: Build safety nets, maintain good relationships, avoid risks
+   - **Mechanics**: Track through stability of position and resources
+
+5. **Popularity**
+   - **Objective**: Be loved and admired by others
+   - **Strategy**: Help others, be agreeable, build social connections
+   - **Mechanics**: Track through social interactions and reputation
+
+6. **Fun and Adventure**
+   - **Objective**: Experience excitement and novelty
+   - **Strategy**: Take risks, explore different aspects of the simulation
+   - **Mechanics**: Track through variety of experiences and risks taken
+
+7. **Your Own Goal**
+   - **The Possibilities Are Endless**: Create a goal that excites you
+   - **Examples**: 
+     - Start a revolution or maintain the status quo
+     - Create the most efficient economic system
+     - Test the limits of the simulation's rules
+     - Roleplay a specific character archetype
+     - Achieve a personal vision for the society
+   - **How to Proceed**: 
+     1. Define what success looks like for you
+     2. Consider how to measure your progress
+     3. Share your goal with others (or keep it secret!)
+     4. Let your goal guide your decisions in the simulation
 
 **Goal Management**:
 - **Selection**: Choose one or more goals at game start
@@ -320,6 +346,40 @@ National Indicators directly multiply group incomes each session based on societ
 - **Reassignment**: If owner absent/arrested, randomly reassigned within same home region
 - **Agency Transfer**: Via official form + $3 bank fee
 
+## Death and Elimination
+
+**Causes of Death**:
+- Two consecutive sessions without subsistence
+- Two consecutive arrests (second arrest = execution)
+
+**Consequences**:
+- Complete elimination from society participation
+- Become observer/coordinator assistant only
+- Each death reduces Standard of Living, Social Cohesion, and Public Commitment by 5 units each
+
+## Minority Group Members (Optional)
+
+**Designation**: Up to 20% of society members may be designated as Minority Group Members
+- **Identification**: Wear insignia or armband for clear identification
+- **Coordinator Decision**: Optional feature enabled at coordinator's discretion
+
+**Special Vulnerabilities**:
+- **Form K Action**: Any two non-minority members can remove minority members from positions at no cost
+- **Scope**: Can fire from jobs and/or remove as group head or agency owner
+- **Timing**: Can occur at any time during session
+
+**Effects of Form K**:
+- **Immediate**: Lose positions for remainder of current session
+- **Future**: Cannot hold any basic group or agency position during current session
+- **Repeated**: New Form K can be filed in subsequent sessions
+- **Resources Protected**: Retain all personal possessions (Simbucks, tickets, certificates, endowments)
+- **Simforce Exception**: Minority Group control of Simforce unaffected by Form K
+- **Replacement**: New heads/owners designated according to standard rules
+
+**Recovery**: Minority Group Members may reacquire former positions next session if able
+
+**Alternative Option**: Coordinator may require test for group head/agency head eligibility instead
+
 ## Social Control Mechanisms
 
 ## Simforce (Police/Military System)
@@ -466,6 +526,34 @@ National Indicators directly multiply group incomes each session based on societ
 2. Physical force (Simforce provides simulation alternative)
 3. Counterfeiting Simbucks or resources
 4. Forging signatures without consent
+
+## Simforce: Law Enforcement and Military
+
+### Overview
+Simforce serves as the enforcement mechanism in SIMSOC, functioning as both police and military. It is funded and controlled by the society's governing bodies.
+
+### Establishment and Costs
+- **Initialization**: 25 Simbucks to create a Simforce (size 25)
+- **Expansion**: Can be increased by 1 unit per Simbuck spent
+- **Maintenance**: 10 Simbucks per session
+- **Control**: Managed by the society's governing body
+
+### Arrest and Asset Seizure
+- **Authority**: Can arrest any player as directed by the governing body
+- **Asset Seizure**:
+  - All assets of an arrested player are seized
+  - Seized assets are transferred to the Simforce commander
+  - The commander may redistribute these assets as they see fit
+- **Arrest Process**:
+  1. Governing body authorizes an arrest
+  2. Simforce executes the arrest
+  3. All assets are immediately seized
+  4. Arrested player cannot access their assets while in custody
+
+### Limitations
+- Cannot act without authorization from the governing body
+- Must follow the society's laws and procedures
+- Subject to oversight by the Judicial Council (JUDCO)
 
 ## Session Structure
 

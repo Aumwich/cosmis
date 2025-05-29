@@ -1,6 +1,6 @@
 # Cosmis - A Social Simulation Game for Discord
 
-A Discord bot system for running a social simulation game based on William A. Gamson's SIMSOC (Simulated Society). The game supports 20-50+ players in roles that explore society, economy, and social justice through structured gameplay.
+A Discord bot system for running a social simulation game based on William A. Gamson's SIMSOC (Simulated Society). The game is designed for 10-90 players who take on roles that explore society, economy, and social justice through structured gameplay.
 
 ## Project Structure
 
