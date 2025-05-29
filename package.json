@@ -1,0 +1,26 @@
+{
+  "name": "cosmis",
+  "version": "1.0.0",
+  "description": "A Discord bot system for running a social simulation game based on SIMSOC",
+  "main": "index.js",
+  "scripts": {
+    "start:admin": "node admin-bot/src/index.js",
+    "start:game": "node game-bot/src/index.js",
+    "dev:admin": "nodemon admin-bot/src/index.js",
+    "dev:game": "nodemon game-bot/src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": ["discord", "bot", "game", "social-simulation", "socsim"],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "discord.js": "^14.14.1",
+    "sqlite3": "^5.1.7",
+    "dotenv": "^16.3.1",
+    "winston": "^3.11.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2",
+    "eslint": "^8.56.0"
+  }
+}

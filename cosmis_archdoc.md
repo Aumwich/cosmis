@@ -117,14 +117,25 @@ cosmis-game/
 - **Documentation**: Generate player-facing docs alongside code development
 
 ## Next Session Goals
-- [ ] Set up Discord application and get bot tokens
-- [ ] Create project folder structure
-- [ ] Initialize basic package.json and dependencies
+- [x] Set up Discord application and get bot tokens
+- [x] Create project folder structure
+- [x] Initialize basic package.json and dependencies
 - [ ] Design initial database schema (including regional structure)
-- [ ] Create Admin bot skeleton with Discord permissions
+- [x] Create Admin bot skeleton with Discord permissions
+- [ ] Create Game bot skeleton with basic functionality
+- [x] Set up Discord server for bot testing
+- [ ] Obtain machine-readable versions of 5th edition SIMSOC books
 - [ ] Draft player onboarding guide template
 - [ ] Plan Discord server channel structure for regions
-- [ ] **Update this ARCHDOC.md file with progress made**
+- [x] **Update this ARCHDOC.md file with progress made**
+
+## Next Session
+In the next session, we'll focus on:
+1. Designing the initial database schema
+2. Planning the Discord server channel structure
+3. Implementing basic bot commands
+
+We'll start with the database schema to define our data models before implementing the channel structure and bot commands.
 
 ## Architectural Questions to Revisit
 - Exact role definitions for game simulation
