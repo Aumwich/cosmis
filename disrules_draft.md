@@ -1,9 +1,70 @@
-# DISRULES.md - Discord Implementation Rules
-**Technical Specification for SIMSOC Discord Adaptation**
-*Version 0.1 - May 2025*
+# DISRULES.md - Cosmis Implementation Rules
+**Technical Specification for SIMSOC to Discord Adaptation**
+*Version 0.2 - May 2025*
 
 ## Overview
-This document outlines how SIMSOC rules will be implemented in Discord. It serves as a technical guide for bot development and game administration.
+This document outlines how the original SIMSOC rules are adapted into Cosmis, our Discord-based implementation. It serves as a technical guide for bot development and game administration, bridging the physical simulation mechanics with Discord's digital platform capabilities.
+
+## Adaptation Philosophy
+
+Cosmis maintains the core educational and experiential elements of SIMSOC while leveraging Discord's unique features to enhance accessibility, automation, and engagement. Our adaptation follows these guiding principles:
+
+1. **Preserve Core Mechanics**: The fundamental social dynamics, economic systems, and power structures of SIMSOC remain intact.
+
+2. **Automate Administrative Tasks**: Repetitive calculations, resource distribution, and status tracking are handled by bots to reduce coordinator workload.
+
+3. **Enhance Transparency**: Discord provides opportunities for clearer information sharing while still maintaining strategic information asymmetry where appropriate.
+
+4. **Increase Accessibility**: The digital format allows for asynchronous participation and removes geographic barriers.
+
+5. **Maintain Educational Value**: All adaptations prioritize the learning objectives around social dynamics, power relationships, and collective decision-making.
+
+## Key Conversion Strategies
+
+### Forms to Slash Commands
+
+The original SIMSOC relies heavily on paper forms for most game actions. In Cosmis, these are converted to Discord slash commands:
+
+- **Form Submission**: Instead of filling out paper forms, players use `/` commands with appropriate parameters
+- **Validation**: Bots automatically validate inputs and permissions before processing
+- **Record Keeping**: All form submissions are logged digitally for transparency and reference
+- **Notifications**: Relevant parties receive immediate notifications when forms affecting them are processed
+
+### Physical Regions to Discord Channels
+
+SIMSOC's physical regions where players gather are implemented as Discord categories and channels:
+
+- **Regional Categories**: Each region (Red, Blue, Yellow, Green, Gray) has its own category
+- **Channel Types**: Each region contains text, voice, and information channels
+- **Travel Mechanics**: Channel access permissions simulate physical travel between regions
+- **Regional Identity**: Visual differentiation through channel colors and naming conventions
+
+### Paper Resources to Digital Assets
+
+Physical game components are represented digitally:
+
+- **Simbucks**: Digital currency tracked by the bot system
+- **Tickets**: Digital assets for travel and subsistence
+- **Support Cards**: Digital tokens distributed through commands
+- **Passages**: Text-based puzzles delivered through Discord
+
+### In-Person Interactions to Discord Communications
+
+SIMSOC relies on face-to-face interactions, which are adapted to Discord's communication tools:
+
+- **Public Discussions**: Regional text channels for open conversations
+- **Private Negotiations**: Direct messages and private channels for confidential talks
+- **Group Meetings**: Voice channels for real-time discussions
+- **Announcements**: Dedicated channels for important information
+
+### Manual Calculations to Bot Automation
+
+Many SIMSOC processes requiring manual calculation are automated:
+
+- **National Indicators**: Automatically calculated based on player actions
+- **Income Distribution**: Automatically processed at the beginning of each session
+- **Resource Tracking**: Digital inventory management for all players and groups
+- **Session Timing**: Automated notifications for session phases and deadlines
 
 ## Core Discord Architecture
 
@@ -18,7 +79,6 @@ This document outlines how SIMSOC rules will be implemented in Discord. It serve
 - **Base Roles**:
   - `@Player` - Base role for all active participants
   - `@Minority Group` - For players designated as minority members (if enabled)
-  - `@Observer` - For eliminated players or non-participants
 
 - **Basic Groups**:
   - `@BASIN` - Basic Industry employees
@@ -47,7 +107,7 @@ This document outlines how SIMSOC rules will be implemented in Discord. It serve
 
 - **Special Roles**:
   - `@Coordinator` - Game administrators
-  - `@Spectator` - Read-only access to observe the game
+  - `@Spectator` - For eliminated players and external observers; has read-only access to game channels, but can communicate in designated spectator areas (e.g., #spectator-kibitz channel)
 
 ### Bot Architecture
 - **The Coordinator**: Main game bot handling all game mechanics

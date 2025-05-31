@@ -1,17 +1,21 @@
 # ARCHDOC - Cosmis Project
-**Version 1.2 - May 29, 2025**
+**Version 1.4 - May 30, 2025**
 
 This is the **archdoc** (architecture document) for the Cosmis project - the primary reference file containing the complete project architecture, status, and development context. This document is designed to quickly bring any AI agent up to speed on the project.
 
-**For AI Agents**: Read `.windsurfrules` first for specific instructions on how to work with this project.
+**Cosmis** is the name of our Discord-based social simulation game, adapted from William A. Gamson's SIMSOC (Simulated Society).
+
+**For AI Agents**: Read `windsurfrules.txt` first for specific instructions on how to work with this project.
 
 ## Version Control
-- **Current Version**: 1.0
-- **Last Updated**: May 28, 2025
+- **Current Version**: 1.4
+- **Last Updated**: May 30, 2025
 - **AI Agents**: Update version number and changelog when making significant modifications
 - **Developer**: Always use the most recent version when starting new AI sessions
 
 ### Changelog
+- **v1.4** (May 30, 2025): Clarified distinction between SIMSOC (original game) and Cosmis (our Discord adaptation)
+- **v1.3** (May 30, 2025): Completed comprehensive SIMSOC rules documentation, added educational goals and historical context, updated Discord adaptation plan
 - **v1.2** (May 29, 2025): Integrated SIMSOC rules and Discord adaptation plan
 - **v1.1** (May 28, 2025): Added reference to .windsurfrules file
 - **v1.0** (May 28, 2025): Initial architecture document created
@@ -19,16 +23,37 @@ This is the **archdoc** (architecture document) for the Cosmis project - the pri
 ---
 
 ## Project Overview
-Building a Discord bot system to run a social simulation game based on William A. Gamson's SIMSOC (Simulated Society). The game is designed for 10-90 players who take on roles exploring society, economy, and social justice through structured gameplay.
+Cosmis is a Discord-based social simulation game adapted from William A. Gamson's SIMSOC (Simulated Society). Our project involves building a Discord bot system to run this adaptation, designed for 10-90 players who take on roles exploring society, economy, and social justice through structured gameplay.
+
+While SIMSOC was designed for in-person, classroom-based interactions, Cosmis leverages Discord's digital platform to create an accessible, modern version of the simulation that maintains the educational core of the original while adding new possibilities for engagement and analysis.
+
+### Educational Goals
+The Cosmis project aims to create a free, accessible educational tool that facilitates understanding of:
+
+- **Social Dynamics**: How groups form, interact, and evolve within societal structures
+- **Power Relationships**: The acquisition, use, and distribution of power in communities
+- **Economic Systems**: Resource allocation, scarcity, and wealth distribution
+- **Individual vs. Collective Goals**: Balancing personal advancement with societal welfare
+- **Negotiation and Bargaining**: Developing skills for conflict resolution and cooperation
+- **Social Justice**: Exploring equity, fairness, and systemic structures
+- **Decision-Making**: Understanding the impact of individual and group choices on society
+
+### Historical Context
+SIMSOC rules were developed over many decades, refined through the experiences of professors, students, business leaders, and executives. The simulation has been used in educational settings since the 1960s, providing valuable insights into human behavior and societal structures.
+
+While respecting the valuable core mechanics and proven educational design of the original SIMSOC, our adaptation recognizes opportunities to emphasize different aspects of society relevant to contemporary discourse and to leverage the unique affordances of digital platforms like Discord.
 
 ## Current Status
-- **Phase**: Initial setup complete, ready for core development
+- **Phase**: SIMSOC rules documentation complete, ready for Cosmis implementation
 - **Completed**: 
   - Project structure initialized
   - Bot applications created
   - Test server configured
-  - SIMSOC rules documented
-- **Next Phase**: Core game mechanics implementation
+  - Comprehensive SIMSOC rules documented (simrules.md)
+  - Initial Cosmis adaptation plan outlined (disrules_draft.md)
+  - Added sections on Simforce, Riots, Guard Posts, and Government
+  - Created Forms Reference and Session Structure documentation
+- **Next Phase**: Detailed Cosmis implementation specifications and bot development
 
 ## Architecture Plan
 **Multi-Bot System:**
@@ -167,19 +192,28 @@ cosmis-game/
 ## Documentation Structure
 
 ### 1. SIMSOC Rules (simrules.md)
-- Original board game rules and mechanics
-- Foundation for Discord adaptation
-- Technical reference for developers
+- Comprehensive documentation of the original SIMSOC simulation mechanics
+- Represents the core rules and systems that define William A. Gamson's simulation
+- Serves as the authoritative reference for our Cosmis adaptation
+- Includes detailed sections on all game elements: basic groups, national indicators, Simforce, riots, etc.
+- Maintains the educational integrity of the original simulation
 
-### 2. Discord Implementation Rules (disrules.md)
-- Technical specification for bot development
-- Maps SIMSOC concepts to Discord features
-- Defines system behaviors and automations
+### 2. Cosmis Implementation Rules (disrules_draft.md)
+- Technical specification for adapting SIMSOC to Cosmis on Discord
+- Maps physical SIMSOC concepts to Discord features (regions → channels, etc.)
+- Defines bot behaviors, commands, and automation requirements
+- Addresses Discord-specific challenges and opportunities
+- Specifies how to handle mechanics that require physical presence in the original game
+- Includes comprehensive adaptation philosophy and conversion strategies
 
-### 3. Player Documentation (playerrules.md)
-- How to play the Discord version
-- Command references and guides
-- Game concepts explained for players
+### 3. Cosmis Player Guide (playerrules.md)
+- How to play Cosmis on Discord
+- Command references and guides for interacting with the bots
+- Game concepts explained in player-friendly language
+- Onboarding instructions for new participants
+
+### Relationship Between Documents
+The simrules document captures the mechanical rules of the original SIMSOC game as faithfully as possible, serving as our foundation. The disrules document then transforms these mechanics into Cosmis, our Discord-compatible adaptation, addressing the challenges of adapting a physical game to a digital platform while preserving the core educational experience. The playerrules document will translate both into accessible instructions for Cosmis participants.
 
 ## Future Session Goals
 
@@ -191,14 +225,41 @@ cosmis-game/
 - [x] Create Admin bot skeleton with Discord permissions
 - [x] Set up Discord server for bot testing
 - [x] Review SIMSOC rules documentation
-- [x] Draft core SIMSOC rules (simrules_draft.md)
-- [x] Draft Discord implementation rules (disrules_draft.md)
+- [x] Complete comprehensive SIMSOC rules (simrules.md)
+  - [x] Document all basic groups and their mechanics
+  - [x] Detail National Indicators and their effects
+  - [x] Add comprehensive Simforce mechanics
+  - [x] Document Riots and Guard Posts systems
+  - [x] Add Government and Special Events sections
+  - [x] Create Forms Reference and Session Structure documentation
+- [x] Draft Cosmis implementation rules (disrules_draft.md)
+  - [x] Add comprehensive adaptation philosophy
+  - [x] Detail key conversion strategies (forms to slash commands, etc.)
+  - [x] Outline Discord-specific implementation approaches
 - [x] Define five-region system (Red, Blue, Yellow, Green, Gray)
 - [x] Design spectator system and permissions
 
 ### Immediate Next Steps
-- [ ] Create The Coordinator bot skeleton with basic functionality
-- [ ] Implement Admin bot setup commands for channel/role creation
+- [ ] Finalize Cosmis implementation rules (disrules_draft.md)
+  - [ ] Complete bot commands for all SIMSOC forms and actions
+  - [ ] Detail Discord channel permissions for simulating travel
+  - [ ] Specify Simforce implementation with Discord roles
+  - [ ] Design UI mockups for National Indicators dashboard
+  - [ ] Document riot and guard post mechanics in Discord
+- [ ] Create The Coordinator bot skeleton
+  - [ ] Set up basic command structure
+  - [ ] Implement economy tracking system
+  - [ ] Create player registration system
+- [ ] Implement Admin bot setup commands
+  - [ ] Automated channel/category creation
+  - [ ] Role creation and permission setting
+  - [ ] Initial server configuration
+- [ ] Develop database schema
+  - [ ] Player data tables
+  - [ ] Transaction history
+  - [ ] Group membership tracking
+  - [ ] National Indicators history
+- [ ] Create initial Cosmis player guide (playerrules.md)
 - [ ] Create database initialization scripts
 - [ ] Implement basic movement system between regions
 - [ ] Set up automated channel permissions
