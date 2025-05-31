@@ -541,19 +541,19 @@ Simforce serves as the enforcement mechanism in SIMSOC, functioning as both poli
 ### Arrest and Asset Seizure
 - **Authority**: Can arrest any player as directed by the governing body
 - **Asset Seizure**:
-  - All assets of an arrested player are seized
+  - All assets of an arrested player are permanently seized
   - Seized assets are transferred to the Simforce commander
   - The commander may redistribute these assets as they see fit
 - **Arrest Process**:
   1. Governing body authorizes an arrest
   2. Simforce executes the arrest
-  3. All assets are immediately seized
-  4. Arrested player cannot access their assets while in custody
+  3. All assets are immediately and permanently seized from the player
+  4. The arrested player remains in the game but loses all Simbucks, possessions, and positions
 
 ### Limitations
 - Cannot act without authorization from the governing body
-- Must follow the society's laws and procedures
-- Subject to oversight by the Judicial Council (JUDCO)
+- Must follow the society's established procedures for arrests
+- Cannot be used to violate the core game rules
 
 ## Session Structure
 
