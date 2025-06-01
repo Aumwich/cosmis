@@ -1,70 +1,20 @@
-# DISRULES.md - Cosmis Implementation Rules
-**Technical Specification for SIMSOC to Discord Adaptation**
-*Version 0.2 - May 2025*
+# DISRULES.md - Cosmis Technical Specification
+**Discord Implementation of SIMSOC Game Mechanics**
+*Version 0.3 - May 2025*
 
 ## Overview
-This document outlines how the original SIMSOC rules are adapted into Cosmis, our Discord-based implementation. It serves as a technical guide for bot development and game administration, bridging the physical simulation mechanics with Discord's digital platform capabilities.
+This document provides the technical specifications for implementing SIMSOC mechanics in Cosmis on Discord. It serves as the primary reference for bot development, focusing on concrete implementation details rather than design philosophy.
 
-## Adaptation Philosophy
+> **Note**: For adaptation philosophy and design process, see `adaptation_process.md`
+>
+> **Implementation Principle**: For most game mechanics requiring private feedback, use Discord's ephemeral responses (visible only to the command user) rather than direct messages (DMs). This keeps routine interactions within the main Discord interface.
+>
+> **DM Usage**: Reserve direct messages for significant game events that warrant special attention:
+> - Game start notifications with personalized role information and initial instructions
+> - Game end notifications with personal results and debrief information
+> - Critical updates that players should not miss even when offline
 
-Cosmis maintains the core educational and experiential elements of SIMSOC while leveraging Discord's unique features to enhance accessibility, automation, and engagement. Our adaptation follows these guiding principles:
-
-1. **Preserve Core Mechanics**: The fundamental social dynamics, economic systems, and power structures of SIMSOC remain intact.
-
-2. **Automate Administrative Tasks**: Repetitive calculations, resource distribution, and status tracking are handled by bots to reduce coordinator workload.
-
-3. **Enhance Transparency**: Discord provides opportunities for clearer information sharing while still maintaining strategic information asymmetry where appropriate.
-
-4. **Increase Accessibility**: The digital format allows for asynchronous participation and removes geographic barriers.
-
-5. **Maintain Educational Value**: All adaptations prioritize the learning objectives around social dynamics, power relationships, and collective decision-making.
-
-## Key Conversion Strategies
-
-### Forms to Slash Commands
-
-The original SIMSOC relies heavily on paper forms for most game actions. In Cosmis, these are converted to Discord slash commands:
-
-- **Form Submission**: Instead of filling out paper forms, players use `/` commands with appropriate parameters
-- **Validation**: Bots automatically validate inputs and permissions before processing
-- **Record Keeping**: All form submissions are logged digitally for transparency and reference
-- **Notifications**: Relevant parties receive immediate notifications when forms affecting them are processed
-
-### Physical Regions to Discord Channels
-
-SIMSOC's physical regions where players gather are implemented as Discord categories and channels:
-
-- **Regional Categories**: Each region (Red, Blue, Yellow, Green, Gray) has its own category
-- **Channel Types**: Each region contains text, voice, and information channels
-- **Travel Mechanics**: Channel access permissions simulate physical travel between regions
-- **Regional Identity**: Visual differentiation through channel colors and naming conventions
-
-### Paper Resources to Digital Assets
-
-Physical game components are represented digitally:
-
-- **Simbucks**: Digital currency tracked by the bot system
-- **Tickets**: Digital assets for travel and subsistence
-- **Support Cards**: Digital tokens distributed through commands
-- **Passages**: Text-based puzzles delivered through Discord
-
-### In-Person Interactions to Discord Communications
-
-SIMSOC relies on face-to-face interactions, which are adapted to Discord's communication tools:
-
-- **Public Discussions**: Regional text channels for open conversations
-- **Private Negotiations**: Direct messages and private channels for confidential talks
-- **Group Meetings**: Voice channels for real-time discussions
-- **Announcements**: Dedicated channels for important information
-
-### Manual Calculations to Bot Automation
-
-Many SIMSOC processes requiring manual calculation are automated:
-
-- **National Indicators**: Automatically calculated based on player actions
-- **Income Distribution**: Automatically processed at the beginning of each session
-- **Resource Tracking**: Digital inventory management for all players and groups
-- **Session Timing**: Automated notifications for session phases and deadlines
+## Technical Reference Architecture
 
 ## Core Discord Architecture
 
@@ -154,17 +104,81 @@ Many SIMSOC processes requiring manual calculation are automated:
   - Status visible via `/status` command
 
 ### 3. National Indicators
-- **Access Control**:
-  - Only MASMED head has direct access to the actual indicator values with visual indicators (📈/📉)
-  - MASMED head is responsible for communicating indicators to the public
-  - Other players must rely on MASMED's reports or make their own assessments
-- **Impact of Player Count**:
-  - Each `/dropout` (absentee) negatively affects national indicators
-  - Each `/dropin` (new player) provides a corresponding boost to indicators
-- **Player Interaction**:
-  - MASMED head uses `/indicators` to view actual values with visual indicators
-  - Other players can request indicator info from MASMED
-  - Historical trends may be available based on MASMED's reporting
+
+#### Technical Specification
+
+1. **Slash Commands**:
+   - `/indicators` - MASMED head only: View current indicator values
+   - `/indicatorhistory` - MASMED head only: View historical trends
+
+2. **Indicator Types**:
+   - **Food and Energy Supply (FES)**: Resources available to society
+   - **Standard of Living (SL)**: Overall quality of life
+   - **Social Cohesion (SC)**: Unity and cooperation within society
+   - **Public Commitment (PC)**: Dedication to collective goals
+
+3. **Calculation Formulas**:
+   - All indicators start at 100 for first session
+   - Natural decline of 10% each session (entropy)
+   - **Public Programs Investment Effects**:
+     - **Research and Conservation Program**:
+       - FES: +0.4 units per Simbuck invested (40% of investment value)
+       - SL: +0.1 units per Simbuck invested (10% of investment value)
+     - **Welfare Services Program**:
+       - SL: +0.1 units per Simbuck invested (10% of investment value)
+       - SC: +0.2 units per Simbuck invested (20% of investment value)
+       - PC: +0.2 units per Simbuck invested (20% of investment value)
+   - **FES Calculation**:
+     - -2 units per BASIN passage purchased
+     - -1 unit per arrested player
+     - +0.4 units per Simbuck invested in Research and Conservation
+     - +3 units per completed group project
+   - **SL Calculation**:
+     - +1 unit per completed BASIN passage
+     - +1 unit per RETSIN anagram word found
+     - +2 units per Luxury Living purchase
+     - +0.1 units per Simbuck invested in Research and Conservation
+     - +0.1 units per Simbuck invested in Welfare Services
+   - **SC Calculation**:
+     - +2 units per subsistence assistance (tracked via transactions)
+     - -3 units per player arrest
+     - +/- based on support card distribution (balanced = positive)
+     - +0.2 units per Simbuck invested in Welfare Services
+     - -5 units per guard post established
+   - **PC Calculation**:
+     - -1 unit per completed RETSIN anagram
+     - -3 units per player arrest
+     - +0.2 units per Simbuck invested in Welfare Services
+     - -2 units per riot participant
+     - +1 unit per 4 positive goal declarations
+     - -1 unit per negative goal declaration
+     - +5 units per public program participation
+     - +2 units per group project participation
+
+4. **Impact on Economy**:
+   - If indicators decline below certain thresholds, group income decreases
+   - If indicators rise above certain thresholds, group income increases
+   - Thresholds: <80 = -20% income, <60 = -40% income, <40 = -60% income
+   - Thresholds: >120 = +20% income, >140 = +40% income, >160 = +60% income
+
+5. **Discord Implementation**:
+   - MASMED head receives indicator values as a formatted message
+   - Includes emoji indicators for trends (📈/📉)
+   - Color-coded text for critical thresholds
+
+6. **Access Control**:
+   - Only MASMED head has direct access to the actual indicator values
+   - MASMED head is responsible for communicating indicators to the public
+   - Other players must rely on MASMED's reports or make their own assessments
+
+7. **Impact of Player Count**:
+   - Each `/dropout` (absentee) negatively affects national indicators (-2 to all)
+   - Each `/dropin` (new player) provides a corresponding boost to indicators (+2 to all)
+
+8. **Player Interaction**:
+   - MASMED head uses `/indicators` to view current values
+   - MASMED manually shares information with other players
+   - Historical data provided to MASMED for context
 
 ### 4. Economic System
 - **Currency**: Virtual Simbucks tracked in database
@@ -175,6 +189,53 @@ Many SIMSOC processes requiring manual calculation are automated:
   - Transaction logs in `#transaction-log` (admin only)
   - Receipts DMed to both parties for transparency
   - **Note**: Transactions are binding and can be used for trades or agreements
+
+### Luxury Living Implementation
+
+#### Technical Specification
+
+1. **Slash Commands**:
+   - `/buy luxury` - Purchase Luxury Living status
+   - `/luxurystatus` - Check your Luxury Living status
+   - `/cancel luxury` - Cancel Luxury Living status (with confirmation prompt)
+
+2. **Mechanics**:
+   - Costs 10 Simbucks per session
+   - Automatically provides subsistence (no need to purchase separately)
+   - Grants access to exclusive `#luxury-lounge` channels in each inhabited region
+   - Provides visual indicator in username (🌟)
+   - Automatic renewal unless cancelled
+   - Confirmation prompt when cancelling: "Are you sure? This will remove your luxury living status and it will have to be repurchased to be reacquired."
+
+3. **Discord Implementation**:
+   - `@Luxury-Living` role with special color
+   - Access to region-specific luxury lounges
+   - Custom emoji access
+   - Priority in voice channels (speaker priority)
+   - Luxury lounges only in inhabited regions (not in Gray region)
+
+### Private Transportation Implementation
+
+#### Technical Specification
+
+1. **Slash Commands**:
+   - `/buy transport` - Purchase Private Transportation
+   - `/transportstatus` - Check your Private Transportation status
+
+2. **Mechanics**:
+   - One-time purchase of 25 Simbucks
+   - Allows unlimited travel between regions without travel tickets
+   - No regional visit limitations (can visit same region multiple times)
+   - Cannot be transferred to other players
+   - Lost if player is arrested
+
+3. **Discord Implementation**:
+   - `@Private-Transport` role
+   - Bypass of normal travel restrictions in channel permissions
+   - Visual indicator in username (🚗)
+   - Travel log entries marked with special icon
+
+> **Future Expansion Idea:** In a multi-nation implementation, private transport passes would only apply to the nation in which they were purchased. Additional passes would be required for other nations.
 
 - **Perks System**:
   - **Cosmetic Flairs**: Special role colors, badges, or titles
@@ -229,6 +290,33 @@ To replace physical verification:
 
 ## Communication System
 
+### Political Party Support System Implementation
+
+#### Technical Specification
+
+1. **Slash Commands**:
+   - `/support [POP|SOP]` - Submit or change your support for a political party
+   - `/supportstatus` - Check your current support status
+   - `/supportcount` - Party heads only: View current support count
+
+2. **Support Mechanics**:
+   - Players can support either POP or SOP during a session
+   - Players can change their support during a session (last submission counts)
+   - Support from arrested or absentee players is automatically invalidated
+   - Support status resets at the beginning of each new session
+
+3. **Income Calculation**:
+   - Formula: (Support Count / 40% of active players) × 1.25 × Initial Income
+   - Automatically calculated at session end
+   - Affected by National Indicators
+   - Results displayed to party heads via `/income` command
+
+4. **Discord Implementation**:
+   - Private ephemeral response when support is registered or changed
+   - Support counts visible only to party heads through ephemeral responses
+   - Support history viewable during debrief
+   - Visual indicators for successful submission (reaction on command)
+
 ### MASMED (Mass Media) Implementation
 - **Regional Announcements**:
   - MASMED leaders can broadcast messages to all regions simultaneously
@@ -244,6 +332,44 @@ To replace physical verification:
   - MASMED can pin important announcements in each region
   - Scheduled news cycles can be automated
   - Emergency broadcast capability for critical updates
+
+### EMPIN (Employee Interests) Implementation
+
+#### Technical Specification
+
+1. **Slash Commands**:
+   - `/income` - EMPIN head only: View current income
+
+2. **Income Calculation**:
+   - Formula: $15 × SL (Size Level) initially
+   - Subsequent income based on Support Cards submitted
+   - Affected by National Indicators
+
+3. **Discord Implementation**:
+   - EMPIN members have access to private EMPIN channels
+   - Negotiation with employers (BASIN/RETSIN) happens through natural player interaction
+   - No mechanical support system - all player advocacy happens through social interaction
+
+> **Note:** EMPIN's purpose is to represent employee interests through negotiation and social interaction. There are no mechanical "support" commands - players use natural Discord communication to fulfill their role.
+
+### HUMSERVE (Human Services) Implementation
+
+#### Technical Specification
+
+1. **Slash Commands**:
+   - `/income` - HUMSERVE head only: View current income
+
+2. **Income Calculation**:
+   - Formula: $15 × SL (Size Level) initially
+   - Subsequent income based on Support Cards submitted
+   - Affected by National Indicators
+
+3. **Discord Implementation**:
+   - Assistance to players happens entirely through natural social interaction
+   - Players use standard `/give` commands to provide subsistence or tickets to those in need
+   - No special commands for assistance - all help is negotiated between players
+
+> **Note:** HUMSERVE's purpose is to provide assistance to players in need through natural social interaction. There are no mechanical "assistance request" commands - players communicate their needs through normal Discord channels, and HUMSERVE members respond accordingly.
 
 ### JUDCO (Judicial Committee)
 - **Rule Enforcement**:
@@ -367,11 +493,119 @@ All game mechanics are enforced automatically by the bot, while players are resp
 3. Basic economy (Simbucks, transactions)
 4. Subsistence tracking
 
+### Individual Goals System
+
+#### Technical Specification
+
+1. **Slash Commands**:
+   - `/goal set [description]` - Set your individual goal for the game
+   - `/goaldeclaration [yes|no|change]` - Submit a goal declaration each session
+   - `/goalstatus` - Check your current goal
+   - `/listgoals` - Spectator command: View all player goals
+
+2. **Goal Declaration Mechanics**:
+   - Players can submit one goal declaration per session
+   - Three possible declarations:
+     - "Yes, I'm satisfied with how I'm meeting my goals"
+     - "No, I'm not satisfied with how I'm meeting my goals"
+     - "I've changed my individual goals as follows: [description]"
+   - Declarations directly affect Public Commitment National Indicator:
+     - Every 4 positive declarations: Public Commitment +1 unit
+     - Each negative declaration: Public Commitment -1 unit
+     - Goal changes or abstentions: No effect on Public Commitment
+   - Invalid declarations (multiple submissions, from arrested/absent players) have no effect
+
+3. **Goal Management**:
+   - Players select from predefined goals or create custom ones
+   - Suggested goals include: Power, Center of Attention, Style of Life, Security, Popularity, Fun and Adventure
+   - Players can change goals during the game by using the "change" option
+   - Goals are self-evaluated; no mechanical completion tracking
+
+4. **Discord Implementation**:
+   - Goals are private by default
+   - Players can opt to make goals public with `/goal public`
+   - Goal declarations are submitted directly to coordinator bot
+   - Spectators can view all goals with `/listgoals` command
+   - Declaration statistics shown to MASMED for National Indicator reporting
+
+### Riot and Guard Post Mechanics
+
+#### Technical Specification
+
+1. **Slash Commands**:
+   - `/riot` - Sign a riot form (one per player per session)
+   - `/guardpost create [region]` - Establish a guard post in a region (costs $20)
+   - `/guardpost renew [region]` - Renew a guard post for another session (costs $5)
+
+2. **Riot Mechanics**:
+   - Riots affect the entire nation, not just specific regions
+   - Each player may participate in only one riot per session
+   - A riot occurs when enough players use the `/riot` command (minimum 3)
+   - Riots impact National Indicators:
+     - Public Commitment: -2 units per rioter
+     - Social Cohesion: Decreases based on percentage of population rioting
+       (5%: no effect, 10%: -2, 15%: -6, 20%: -12, 25%: -20, 30%+: -30)
+   - Arrested players cannot participate in riots
+   - Riot participation is valid only for the session in which it occurs
+
+3. **Guard Post Mechanics**:
+   - Guard posts are region-specific (prevent riots in that region only)
+   - Cost: $20 to establish, $5 to renew each session
+   - Last for one session unless renewed
+   - Each guard post reduces Social Cohesion by 5 units
+   - Make it impossible for riots to occur in the protected region
+   - Players in regions with guard posts cannot participate in riots
+
+4. **Discord Implementation**:
+   - Riots are initiated via `/riot` command
+   - Guard posts are visually indicated in region channels with a shield emoji
+   - Riot events and guard post establishments are announced in #event-log
+   - During riots, work-related commands are temporarily disabled
+   - Guard posts are visible to all players in the region
+
 ### Phase 2: Game Mechanics
 1. National indicators
 2. Employment and agencies
 3. Simforce and law enforcement
 4. Public programs
+
+## Simforce Implementation
+
+### Technical Specification
+
+1. **Creation and Management**:
+   - `/simforce create name:[text] authorization:[text]` - Creates a new Simforce (costs 25 Simbucks)
+   - `/simforce invest amount:[number]` - Increases Simforce size (1:1 ratio)
+   - `/simforce renew` - Renews Simforce for next session (10 Simbucks)
+   - `/simforce status` - Shows current size and protection status
+
+2. **Core Functions**:
+   - `/simforce arrest @user reason:[text]` - Arrests a player (costs 10 Simbucks)
+   - `/simforce protect @user` - Extends protection to a player
+   - `/simforce attack name:[text]` - Attacks another Simforce
+   - `/simforce release @user` - Releases an arrested player
+
+3. **Database Structure**:
+   ```
+   simforces {
+     id: string,
+     name: string,
+     size: number,
+     owner_id: string,
+     authorized_users: string[],
+     protected_users: string[],
+     arrested_users: string[],
+     created_at: timestamp,
+     last_renewed: timestamp
+   }
+   ```
+
+4. **Discord Implementation**:
+   - `@Simforce-Commander` role for Simforce heads
+   - `@Protected` role for users under Simforce protection
+   - `@Arrested` role with restricted channel permissions
+   - Automated channel access restrictions for arrested users
+   - Visual indicators in username for arrest/protection status
 
 ### Phase 3: Advanced Features
 1. Automated turn processing

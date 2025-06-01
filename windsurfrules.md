@@ -1,9 +1,9 @@
 # Windsurf Rules for Cosmis Project
 
 ## Primary Workflow
-1. **Always read ARCHDOC.md first** - This contains the complete project architecture and context
-2. **Update ARCHDOC.md after significant changes** - Increment version number and update changelog
-3. **Notify user when ARCHDOC is updated** - Tell them what changed and why
+1. **Always read cosmis_archdoc.md first** - This contains the complete project architecture and context
+2. **Update cosmis_archdoc.md after significant changes** - Increment version number and update changelog
+3. **Notify user when cosmis_archdoc.md is updated** - Tell them what changed and why
 4. **Use checkboxes [ ] for all task tracking** - Visual progress indicators
 
 ## Code Standards for Cosmis
@@ -12,7 +12,7 @@
 - **Error Handling**: Always use try/catch blocks for Discord API and database operations
 - **Variables**: Clear, descriptive names (no abbreviations unless obvious)
 - **Functions**: Modular, single-purpose functions with clear names
-- **File Structure**: Follow the folder structure defined in ARCHDOC.md
+- **File Structure**: Follow the folder structure defined in cosmis_archdoc.md
 
 ## Discord Bot Specific Rules
 - **Use Discord.js latest version**
@@ -50,6 +50,15 @@
 - **End each session** by updating ARCHDOC with progress made
 - **Use checkboxes** to track immediate next steps
 - **Document decisions** in ARCHDOC changelog with rationale
+- **Focus on one task at a time** - Complete each task fully before moving to the next
+- **Maintain tight communication loops** - Get feedback on each step before proceeding
+- **Sequential task progression** - Can accomplish multiple tasks in a session by completing them one by one
+
+## Implementation Guidelines
+- **Distinguish SIMSOC vs Cosmis terminology** - It's fine to reference "cards" and "tickets" when discussing the original SIMSOC rules in simrules.md, but avoid these terms when describing the Cosmis implementation
+- **Use Discord-native concepts** - Reactions, slash commands, ephemeral messages instead of physical game elements in the Cosmis implementation
+- **Prefer ephemeral messages** over DMs for routine private feedback to players
+- **Reserve DMs for critical game events** only (game start/end notifications, important updates)
 
 ## What NOT to do
 - Don't use TypeScript (user preference for learning)
@@ -57,10 +66,11 @@
 - Don't over-complicate initial implementation
 - Don't forget to update ARCHDOC when making architectural changes
 - Don't assume user knows Discord.js concepts
+- Don't reference physical game elements like "cards" or "forms" in Cosmis implementation docs (but it's fine when discussing original SIMSOC rules)
 
 ## Emergency Context Recovery
 If you need to understand the project quickly:
-1. Read ARCHDOC.md completely
+1. Read cosmis_archdoc.md completely
 2. Check the changelog for recent changes
 3. Review "Current Status" and "Next Session Goals"
 4. Ask user for clarification if anything is unclear

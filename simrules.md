@@ -721,9 +721,9 @@ Physical force, or its threat, plays a significant role in all societies. While 
 
 ### Establishing a Simforce
 
-Any individual or group may establish a Simforce by completing Form L and submitting it to the coordinator with the minimum creation cost of $25. This creates a Simforce with an initial size of 25 units. The form must include an unambiguous authorization rule specifying who can issue orders for the Simforce. This rule can take any form (e.g., "Orders require a two-thirds majority," "Orders must be signed by specific individuals," etc.).
+Any individual or group may establish a Simforce by completing Form L and submitting it to the coordinator with the minimum creation cost of $25. This creates a Simforce with an initial size of 25 units, representing the direct conversion of the 25 Simbucks initialization cost. The form must include an unambiguous authorization rule specifying who can issue orders for the Simforce. This rule can take any form (e.g., "Orders require a two-thirds majority," "Orders must be signed by specific individuals," etc.).
 
-A Simforce's size can be increased by investing additional Simbucks, with each Simbuck spent increasing the force by 1 unit. This direct 1:1 relationship between investment and size provides a clear metric for measuring a Simforce's power.
+A Simforce's size can be increased by investing additional Simbucks, with each Simbuck spent increasing the force by exactly 1 unit. This direct 1:1 relationship between investment and size provides a clear metric for measuring a Simforce's power.
 
 Once established, a Simforce must be renewed each session or it will be considered defunct. The renewal fee is $10 per session, regardless of force size. This maintenance fee does not increase the Simforce's size, which can only be expanded by the direct investment of additional Simbucks.
 

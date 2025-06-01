@@ -1,19 +1,20 @@
 # ARCHDOC - Cosmis Project
-**Version 1.4 - May 30, 2025**
+**Version 1.5 - May 31, 2025**
 
 This is the **archdoc** (architecture document) for the Cosmis project - the primary reference file containing the complete project architecture, status, and development context. This document is designed to quickly bring any AI agent up to speed on the project.
 
 **Cosmis** is the name of our Discord-based social simulation game, adapted from William A. Gamson's SIMSOC (Simulated Society).
 
-**For AI Agents**: Read `windsurfrules.txt` first for specific instructions on how to work with this project.
+**For AI Agents**: Read `windsurfrules.md` first for specific instructions on how to work with this project.
 
 ## Version Control
-- **Current Version**: 1.4
-- **Last Updated**: May 30, 2025
+- **Current Version**: 1.5
+- **Last Updated**: May 31, 2025
 - **AI Agents**: Update version number and changelog when making significant modifications
 - **Developer**: Always use the most recent version when starting new AI sessions
 
 ### Changelog
+- **v1.5** (May 31, 2025): Created design_options.md with status tracking system; converted windsurfrules.txt to markdown format; updated National Indicators calculation; refined communication methods (ephemeral vs. DMs); established sequential task workflow
 - **v1.4** (May 30, 2025): Clarified distinction between SIMSOC (original game) and Cosmis (our Discord adaptation)
 - **v1.3** (May 30, 2025): Completed comprehensive SIMSOC rules documentation, added educational goals and historical context, updated Discord adaptation plan
 - **v1.2** (May 29, 2025): Integrated SIMSOC rules and Discord adaptation plan
@@ -236,19 +237,31 @@ The simrules document captures the mechanical rules of the original SIMSOC game 
   - [x] Add comprehensive adaptation philosophy
   - [x] Detail key conversion strategies (forms to slash commands, etc.)
   - [x] Outline Discord-specific implementation approaches
+  - [x] Update National Indicators calculation formulas
+  - [x] Refine Political Party Support System
+  - [x] Clarify HUMSERVE assistance as player-driven social interaction
+  - [x] Establish communication principles (ephemeral vs. DMs)
 - [x] Define five-region system (Red, Blue, Yellow, Green, Gray)
 - [x] Design spectator system and permissions
+- [x] Create design_options.md for tracking alternative approaches
+  - [x] Add status tracking system with checkboxes
+  - [x] Document Discord channel structure options
+  - [x] Capture game mechanics alternatives
+- [x] Create cosmis_international.md for multi-nation expansion ideas
+- [x] Convert windsurfrules.txt to windsurfrules.md with improved guidelines
 
 ### Immediate Next Steps
 - [ ] Finalize Cosmis implementation rules (disrules_draft.md)
+  - [ ] Create dedicated section for the Support System with specific slash commands
+  - [ ] Develop detailed specifications for EMPIN and HUMSERVE mechanics
+  - [ ] Define Luxury Living and Private Transportation in the Discord context
+  - [ ] Design the riot and guard post mechanics for Discord implementation
   - [ ] Complete bot commands for all SIMSOC forms and actions
   - [ ] Detail Discord channel permissions for simulating travel
-  - [ ] Specify Simforce implementation with Discord roles
-  - [ ] Design UI mockups for National Indicators dashboard
-  - [ ] Document riot and guard post mechanics in Discord
 - [ ] Create The Coordinator bot skeleton
   - [ ] Set up basic command structure
   - [ ] Implement economy tracking system
+  - [ ] Design National Indicators dashboard
   - [ ] Create player registration system
 - [ ] Implement Admin bot setup commands
   - [ ] Automated channel/category creation
