@@ -225,6 +225,22 @@ indicator_events {
 }
 ```
 
+## Simforces
+
+```
+simforces {
+  id: string,
+  name: string,
+  size: number,
+  owner_id: string,
+  authorized_users: string[],
+  protected_users: string[],
+  arrested_users: string[],
+  created_at: timestamp,
+  last_renewed: timestamp
+}
+```
+
 ## Sessions
 
 ```

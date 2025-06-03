@@ -1,5 +1,5 @@
 # ARCHDOC - Cosmis Project
-**Version 1.5 - May 31, 2025**
+**Version 1.6 - June 2, 2025**
 
 This is the **archdoc** (architecture document) for the Cosmis project - the primary reference file containing the complete project architecture, status, and development context. This document is designed to quickly bring any AI agent up to speed on the project.
 
@@ -14,6 +14,7 @@ This is the **archdoc** (architecture document) for the Cosmis project - the pri
 - **Developer**: Always use the most recent version when starting new AI sessions
 
 ### Changelog
+- **v1.6** (June 2, 2025): Refactored systemrules.md for platform-agnostic implementation supporting both Discord and Matrix; moved database schema details to database_schema.md; clarified communication rules and moderation approach
 - **v1.5** (May 31, 2025): Created design_options.md with status tracking system; converted windsurfrules.txt to markdown format; updated National Indicators calculation; refined communication methods (ephemeral vs. DMs); established sequential task workflow
 - **v1.4** (May 30, 2025): Clarified distinction between SIMSOC (original game) and Cosmis (our Discord adaptation)
 - **v1.3** (May 30, 2025): Completed comprehensive SIMSOC rules documentation, added educational goals and historical context, updated Discord adaptation plan
@@ -24,9 +25,9 @@ This is the **archdoc** (architecture document) for the Cosmis project - the pri
 ---
 
 ## Project Overview
-Cosmis is a Discord-based social simulation game adapted from William A. Gamson's SIMSOC (Simulated Society). Our project involves building a Discord bot system to run this adaptation, designed for 10-90 players who take on roles exploring society, economy, and social justice through structured gameplay.
+Cosmis is a digital social simulation game adapted from William A. Gamson's SIMSOC (Simulated Society). Our project involves building a platform-agnostic system with implementations for both Discord and Matrix, designed for 10-90 players who take on roles exploring society, economy, and social justice through structured gameplay.
 
-While SIMSOC was designed for in-person, classroom-based interactions, Cosmis leverages Discord's digital platform to create an accessible, modern version of the simulation that maintains the educational core of the original while adding new possibilities for engagement and analysis.
+While SIMSOC was designed for in-person, classroom-based interactions, Cosmis leverages digital platforms to create an accessible, modern version of the simulation that maintains the educational core of the original while adding new possibilities for engagement and analysis. The platform-agnostic design ensures flexibility and broader accessibility across different communication platforms.
 
 ### Educational Goals
 The Cosmis project aims to create a free, accessible educational tool that facilitates understanding of:
@@ -251,13 +252,20 @@ The simrules document captures the mechanical rules of the original SIMSOC game 
 - [x] Convert windsurfrules.txt to windsurfrules.md with improved guidelines
 
 ### Immediate Next Steps
+- [x] Refactor systemrules.md for platform-agnostic implementation (supporting both Discord and Matrix)
+  - [x] Update terminology and commands to be platform-neutral
+  - [x] Add platform-specific implementation sections for Discord and Matrix
+  - [x] Clarify communication rules and private messaging policies
+  - [x] Move database schema details to database_schema.md
+  - [x] Ensure consistent currency naming (Simbucks) across platforms
+  - [x] Add notes about pending Coordinator's Manual review for JUDCO and moderation
 - [ ] Finalize Cosmis implementation rules (disrules_draft.md)
-  - [ ] Create dedicated section for the Support System with specific slash commands
+  - [ ] Create dedicated section for the Support System with platform-agnostic commands
   - [ ] Develop detailed specifications for EMPIN and HUMSERVE mechanics
-  - [ ] Define Luxury Living and Private Transportation in the Discord context
-  - [ ] Design the riot and guard post mechanics for Discord implementation
+  - [ ] Define Luxury Living and Private Transportation in a platform-agnostic context
+  - [ ] Design the riot and guard post mechanics for both Discord and Matrix implementation
   - [ ] Complete bot commands for all SIMSOC forms and actions
-  - [ ] Detail Discord channel permissions for simulating travel
+  - [ ] Detail platform-specific permissions for simulating travel
 - [ ] Create The Coordinator bot skeleton
   - [ ] Set up basic command structure
   - [ ] Implement economy tracking system
@@ -292,16 +300,37 @@ The simrules document captures the mechanical rules of the original SIMSOC game 
 
 ### Testing
 - [ ] Set up automated testing framework
-- [ ] Create test scenarios
-- [ ] Conduct initial bot testing
+  - [ ] Create test runners for core game logic
+  - [ ] Implement platform-agnostic test suite
+  - [ ] Add platform-specific integration tests
+- [ ] Create test scenarios for common game situations
+- [ ] Conduct initial bot testing on both Discord and Matrix
 - [ ] Perform load testing with multiple users
+- [ ] Develop continuous integration pipeline for automated testing
+
+## Software Architecture
+
+### Platform-Agnostic Design
+- **Adapter Pattern**: Core game logic will be separated from platform-specific implementations
+  - Core game engine with no dependencies on Discord or Matrix APIs
+  - Platform-specific adapters for Discord and Matrix
+  - Common interfaces for messaging, permissions, and user management
+
+### Craftsmanship Principles
+- **SOLID Principles**: Emphasis on single responsibility and interface segregation
+- **Clean Code**: Well-commented, readable code with meaningful variable names
+- **Separation of Concerns**: Game logic separate from UI/platform concerns
+- **Testability**: All core components designed to be easily testable
+- **Documentation**: Comprehensive inline documentation and external references
 
 ## Implementation Priorities
 1. **Core Database Models**: Implement the schema outlined above
-2. **Basic Movement**: Channel-based region system
-3. **Subsistence Tracking**: Automated checks and consequences
-4. **Economic System**: Basic transactions and agency management
-5. **National Indicators**: Dashboard and update system
+2. **Platform-Agnostic Core**: Develop the central game engine
+3. **Platform Adapters**: Create Discord and Matrix adapters
+4. **Basic Movement**: Platform-specific region navigation
+5. **Subsistence Tracking**: Automated checks and consequences
+6. **Economic System**: Basic transactions and agency management
+7. **National Indicators**: Dashboard and update system
 
 ## Discord-Specific Adaptations Needed
 

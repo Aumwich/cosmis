@@ -80,3 +80,18 @@ If you need to understand the project quickly:
 - ARCHDOC stays current with actual implementation
 - User can hand off project to any AI agent seamlessly
 - Progress is visible through completed checkboxes
+
+## Software Development Principles
+
+### Multi-Platform Architecture
+- **Separation of Concerns** - Divide system into distinct sections with separate responsibilities
+- **Abstraction** - Define interfaces that specify what something does without specifying how
+- **Adapter Pattern** - Create adapters that translate between core game logic and platform-specific APIs
+- **Configuration Over Code** - Use configuration files rather than hard-coded values for platform specifics
+- **Documentation-Driven Development** - Write platform-agnostic documentation before implementation
+
+### System-Agnostic Terminology
+- Use generic terms in documentation ("spaces" instead of "channels")
+- Document platform-specific implementations separately
+- Create a consistent glossary of terms across platforms
+- Mark extension points where platforms will need custom solutions
