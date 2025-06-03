@@ -259,6 +259,16 @@ The simrules document captures the mechanical rules of the original SIMSOC game 
   - [x] Move database schema details to database_schema.md
   - [x] Ensure consistent currency naming (Simbucks) across platforms
   - [x] Add notes about pending Coordinator's Manual review for JUDCO and moderation
+- [x] Implement Admin bot basic slash commands
+  - [x] Create `/ping` command to test bot connectivity
+  - [x] Create `/initialize-regions` command to set up region channels
+  - [x] Set up command deployment system
+  - [x] Create simplified bot for testing without database dependencies
+- [ ] Enhance Admin bot functionality
+  - [ ] Set up role-based permissions for each region to simulate travel restrictions
+  - [ ] Create player registration command to assign users to home regions
+  - [ ] Add more administrative commands for game setup and management
+  - [ ] Implement proper database connectivity and persistence
 - [ ] Finalize Cosmis implementation rules (disrules_draft.md)
   - [ ] Create dedicated section for the Support System with platform-agnostic commands
   - [ ] Develop detailed specifications for EMPIN and HUMSERVE mechanics
@@ -271,10 +281,6 @@ The simrules document captures the mechanical rules of the original SIMSOC game 
   - [ ] Implement economy tracking system
   - [ ] Design National Indicators dashboard
   - [ ] Create player registration system
-- [ ] Implement Admin bot setup commands
-  - [ ] Automated channel/category creation
-  - [ ] Role creation and permission setting
-  - [ ] Initial server configuration
 - [ ] Develop database schema
   - [ ] Player data tables
   - [ ] Transaction history
