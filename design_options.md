@@ -116,3 +116,26 @@ This document captures alternative design approaches, features, and implementati
    - **Pros**: Better accessibility for screen readers, more inclusive
    - **Cons**: Additional development effort
    - **Status**: Approved for implementation - Important consideration for future development
+
+## Future Expansion Ideas
+
+### Multi-Platform Support
+
+1. **Matrix Implementation** [?]
+   - **Option**: Adapt Cosmis to work on Matrix protocol in addition to Discord
+   - **Pros**: Broader accessibility, open protocol, better privacy options
+   - **Cons**: Additional development complexity, potential feature limitations
+   - **Status**: Needs more research - Under consideration for future development
+
+### International Expansion
+
+1. **Multi-Nation Implementation** [~]
+   - **Option**: Expand Cosmis to support multiple simultaneous nations with 100+ players
+   - **Pros**: Larger scale simulation, international diplomacy mechanics, more complex economy
+   - **Cons**: Significantly increased technical complexity, moderation challenges, potential information overload
+   - **Status**: Declined for current scope - May be reconsidered after core implementation is stable
+   - **Key Concepts**:
+     - Nation-to-nation diplomacy and trade systems
+     - Federated server architecture
+     - International organizations spanning multiple nations
+     - Migration mechanics between nations
